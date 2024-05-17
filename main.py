@@ -50,13 +50,13 @@ class RGDealersAPI:
         return self._make_request(endpoint)
 
     def get_product_details(self, product_id: int) -> Dict[str, Any]:
-        endpoint = f"product/get/{product_id}"
+        endpoint = f"product/get/{product_id}?includeExtendedProperties=true"
         return self._make_request(endpoint)
 
-    def search_products(self, query: str) -> List[Dict[str, Any]]:
+    def search_products(self) -> List[Dict[str, Any]]:
         endpoint = "product/search"
-        params = {"q": query}
-        return self._make_request(endpoint, params)
+
+        return self._make_request(endpoint)
     
 if __name__ == '__main__':
     # Create an instance of the RGDealersAPI class
@@ -96,16 +96,22 @@ if __name__ == '__main__':
     df = pd.json_normalize(all_brands)
     df = df.fillna('')
     sh_write(df, 'RandG', 'Brands')
-    
+    """
     # Retrieve all categories
     all_categories = api.get_all_categories()
     print("\nAll Categories:")
     df = pd.json_normalize(all_categories)
     df = df.fillna('')
     sh_write(df, 'RandG', 'Categories')
-    """
     
-    product_details = api.get_product_details(123)
+    
+    product_details = api.get_product_details("CP0546BL")
+    print("\nProduct Details:")
+    print(product_details)
+    df = pd.json_normalize(product_details)
+    df = df.fillna('')
+    #print(df)
+    
     """
     print("\nProduct Details:")
     df = pd.DataFrame()

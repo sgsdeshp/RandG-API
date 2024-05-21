@@ -1,4 +1,4 @@
-# config.py
+"""# Configuration file for the RandG API."""
 import os
 from dotenv import load_dotenv
 
@@ -9,7 +9,7 @@ load_dotenv()
 API_KEY = os.environ.get('api_key')
 BASE_URL = "https://dealers.api.rg-racing.com"
 DB_HOST = os.environ.get("INSTANCE_HOST")
-DB_NAME = "randg"
+DB_NAME = os.environ.get("DB_NAME")
 DB_USER = os.environ.get("DB_USER")
 DB_PASS = os.environ.get("DB_PASS")
 

@@ -1,4 +1,3 @@
-# main.py
 from api import RGDealersAPI
 from database import populate_database
 from config import BASE_URL

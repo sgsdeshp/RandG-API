@@ -44,8 +44,8 @@ class AdditionalField(Base):
     name = Column(String(255), primary_key=True)
     value = Column(String(255))
 
-class Bike(Base):
-    __tablename__ = 'bikes'
+class Make(Base):
+    __tablename__ = 'makes'
     id = Column(Integer, primary_key=True)
     name = Column(String(255))
     image = Column(String(255))
